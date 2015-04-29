@@ -10,6 +10,8 @@ MovieApp.controller('MovieController', function ($scope, FirebaseService) {
 });
 
 MovieApp.controller('AddMovieController', function ($scope, FirebaseService, $location) {
+    
+    $scope.movies = FirebaseService.getMovies();
 
     $scope.addMovie = function () {
 
@@ -26,5 +28,5 @@ MovieApp.controller('AddMovieController', function ($scope, FirebaseService, $lo
             $scope.movieDescription = '';
             $location.path('/');
         }
-    }
+    };
 });

@@ -1,9 +1,9 @@
-<div ng-controller="MovieController">
+<div ng-controller="MovieListController">
     <div>
         <h1>Movies</h1>
         <div ng-repeat="movie in movies">
 
-            <h2>{{movie.name}}</h2>
+            <h2><a ng-href="#/movies/{{movie.$id}}">{{movie.name}}</a></h2>
             <h3>Year: {{movie.year}}, Director: {{movie.director}}</h3>{{movie.description}} <br><br>
             <button ng-click="removeMovie(movie)">Remove {{movie.name}}</button> <br><br>
 

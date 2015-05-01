@@ -1,49 +1,51 @@
-describe('Show movie', function(){
-	var controller, scope;
+describe('Show movie', function () {
+    var controller, scope;
+    var FirebaseServiceMock, RouteParamsMock;
+    beforeEach(function () {
+        module('MovieApp');
+        FirebaseServiceMock = (function () {
 
-	var FirebaseServiceMock, RouteParamsMock;
+            return {
+                getMovie: function (id, done) {                    
+                    if (id === 'qwerty99') {
+                        done({
+                            name: "Above the Law",
+                            year: 1988,
+                            director: "Andrew Davis",
+                            description: "Steven Seagal kicks ass."
+                        });
+                    }
+                    else {
+                        done(null);
+                    }
+                }
+            };
+        })();
+        RouteParamsMock = (function () {
+            return {
+                id: 'qwerty99'
+            };
+        })();
 
-  	beforeEach(function(){
-  		// Lisää moduulisi nimi tähän
-    	module('MyAwesomeModule');
+        // Spy!
+        spyOn(FirebaseServiceMock, 'getMovie').and.callThrough();
 
-    	FirebaseServiceMock = (function(){
-			return {
-				// Toteuta FirebaseServicen mockatut metodit tähän
-			}
-		})();
+        // Injecting the controller
+        inject(function ($controller, $rootScope) {
+            scope = $rootScope.$new();
+            controller = $controller('ViewMovieController', {
+                $scope: scope,
+                FirebaseService: FirebaseServiceMock,
+                $routeParams: RouteParamsMock
+            });
+        });
+    });
 
-		RouteParamsMock = (function(){
-			return {
-				// Toteuta mockattu $routeParams-muuttuja tähän
-			}
-		});
-
-		// Lisää vakoilijat
-	    // spyOn(FirebaseServiceMock, 'jokuFunktio').and.callThrough();
-
-    	// Injektoi toteuttamasi kontrolleri tähän
-	    inject(function($controller, $rootScope) {
-	      scope = $rootScope.$new();
-	      // Muista vaihtaa oikea kontrollerin nimi!
-	      controller = $controller('MyAwesomeController', {
-	        $scope: scope,
-	        FirebaseService: FirebaseServiceMock,
-	       	$routePrams: RouteParamsMock
-	      });
-	    });
-  	});
-
-  	/*
-  	* Testaa alla esitettyjä toimintoja kontrollerissasi
-  	*/
-
-  	/* 
-  	* Testaa, että Firebasesta (mockilta) saatu elokuva löytyy kontrollerista.
-  	* Testaa myös, että Firebasea käyttävästä palvelusta kutsutaan oikeaa funktiota
-  	* käyttämällä toBeCalled-oletusta.
-	*/
-	it('should show current movie from Firebase', function(){
-		expect(true).toBe(false);
-	});
+    it('should show current movie from Firebase', function () {
+        expect(scope.movie.name).toEqual('Above the Law');
+        expect(scope.movie.year).toEqual(1988);
+        expect(scope.movie.director).toEqual('Andrew Davis');
+        expect(scope.movie.description).toEqual('Steven Seagal kicks ass.');
+        expect(FirebaseServiceMock.getMovie).toHaveBeenCalled();
+    });
 });

@@ -1,0 +1,27 @@
+<div ng-controller="MovieSearchController">
+    <h1>Search for Movies</h1>
+    
+    <form name="searchForm">
+
+        <label>Name</label>
+        <input name="name" type="text" ng-model="movie.name" required>
+        <br><br>
+        <label>Year</label>
+        <input name="year" type="text" ng-model="movie.year">
+        <br><br>
+        <button type="submit" ng-click="searchMovies()" ng-disabled="searchForm.$invalid">Search</button>
+    </form>
+    
+    <br><br><a href="#/">Or go back home</a>
+    
+    <h3>
+        <span ng-pluralize count="movies.Search.length" when="{ 'one': 'Your search found one movie', 'other': 'Your search found {{movies.Search.length}} movies' }" ng-if="movies.Search"></span>
+        <span ng-show="!movies.Search && searched">No movies found. :<</span>
+    </h3>
+    <div ng-show="movies.Search && movies.Search.length > 0">        
+        <ul ng-repeat="movie in movies.Search">
+            <li><a ng-href="http://www.imdb.com/title/{{movie.imdbID}}">{{movie.Title}}</a>, {{movie.Year}}
+            </li>
+        </ul>
+    </div>
+</div>

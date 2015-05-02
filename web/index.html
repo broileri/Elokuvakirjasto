@@ -4,17 +4,46 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="bootstrap-3.3.2-dist/css/bootstrap.min.css">
         <title>Movie Library</title>
     </head>
     <body ng-app="MovieApp">
 
-        <div ng-view></div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+
+                <div class="navbar-header">                    
+                    <a class="navbar-brand" href="#/">Home</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/movies/">Movies</a></li>
+                        <li><a href="#/movies/new">New Movie</a></li>
+                        <li><a href="#/movies/search">Search for Movies</a></li>
+                    </ul>               
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><button type="button" class="btn btn-default navbar-btn">Log Out</button></li>
+                    </ul>
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+        <div class="col-md-10" ng-view></div>
 
         <!-- Hyödyllisiä kirjastoja -->
         <script src="bower_components/angular/angular.min.js"></script>
         <script src="bower_components/angular-route/angular-route.min.js"></script>
         <script src="bower_components/firebase/firebase.js"></script>
         <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+
+        <!-- jQuery -->
+        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
 
         <!-- Linkitä omat tiedostosi tähän (huomaa, että polun juuri on web-kansio!) -->
         <script src="app/app.js"></script>

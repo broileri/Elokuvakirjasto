@@ -1,18 +1,22 @@
-<div ng-controller="MovieListController">
-    <div>
-        <h1>Movies</h1>
-        <div ng-repeat="movie in movies">
-
-            <h2><a ng-href="#/movies/{{movie.$id}}">{{movie.name}}</a></h2>
-            <h3>Year: {{movie.year}}, Director: {{movie.director}}</h3>{{movie.description}} <br><br>
-            <button ng-click="removeMovie(movie)">Remove {{movie.name}}</button> <br><br>
-
-        </div> 
-
-        <br>
-        <a href="#/movies/new">Add a New Movie</a> |
-        <a href="#/movies/search"> Search for Movies</a>
-    </div>
+<div>
+    <h1>Movies</h1>
+    <table class="table">
+        <tr>
+            <th style="border-top: none">Title</th>
+            <th style="border-top: none">Director</th>
+            <th style="border-top: none">Year</th>
+            <th style="border-top: none"></th>
+        </tr>
+        <tr ng-repeat="movie in movies">
+            <td><a ng-href="#/movies/{{movie.$id}}">{{movie.name}}</a></td>
+            <td>{{movie.director}}</td>
+            <td>{{movie.year}}</td>
+            <td>
+                <a class="btn btn-primary" href="#/movies/{{movie.$id}}/edit">Edit</a>
+                <a class="btn btn-danger" href="#/movies/" ng-click="removeMovie(movie)">Delete</a>
+            </td>
+        </tr>
+    </table>
 </div>
 
 

@@ -1,0 +1,19 @@
+<form name="registerForm" ng-controller="UserController">
+    <h1>Register new account</h1>
+    <p>{{message}}</p>
+    <div>            
+        <label>E-mail</label>
+        <input class="form-control" name="email" type="email" ng-model="newEmail" required>
+        <span ng-show="registerForm.email.$invalid && registerForm.email.$dirty">
+            E-mail can't be empty!
+        </span>
+        <br><br>
+        <label>Password</label>
+        <input class="form-control" name="password" type="password" ng-model="newPassword" required>
+        <span ng-show="registerForm.password.$invalid && registerForm.password.$dirty">
+            Password can't be empty!
+        </span>
+    </div>
+    <br>
+    <button class="btn btn-default" type="submit" ng-click="register()" ng-disabled="registerForm.$invalid">Register</button>
+</form>

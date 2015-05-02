@@ -1,10 +1,10 @@
-<div ng-controller="ViewMovieController">
-    <div>
-        <h1>{{movie.name}} ({{movie.year}})</h1>
-        <h3>{{movie.director}}</h3>
-        <p>{{movie.description}}</p>
-        <br>
-        <a href="#/movies/{{movie.$id}}/edit">Edit</a> | 
-        <a href="#/">Home</a>
-    </div>
+
+<div>
+    <h1>{{movie.name}}</h1>
+    <ul>
+        <li><strong>Director: </strong>{{movie.director}}</li>
+        <li><strong>Year: </strong>{{movie.year}}</li>
+    </ul>
+    <p>{{movie.description}}</p>
 </div>
+

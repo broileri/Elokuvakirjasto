@@ -1,43 +1,39 @@
 
-<div ng-controller="NewMovieController">
+<div>
     <h1>Add a Movie</h1>
 
-
     <form name="infos">
-        <p>
-            <label>Name</label>
-            <input type="text" name="movieName" ng-model="movieName" required>
+        <div class="form-group">
+            <label for="mname">Name</label>
+            <input class="form-control" type="text" name="movieName" id="mname" ng-model="movieName" required>
             <span ng-show="infos.movieName.$invalid && infos.movieName.$dirty">
                 Name can't be empty.
             </span>
-        </p>
-        <p>
-            <label>Year</label>
-            <input type="text" name="movieYear" ng-model="movieYear"  required ng-pattern="/^[0-9]{4}$/">
+        </div>
+        <div class="form-group">
+            <label for="myear">Year</label>
+            <input class="form-control" type="text" name="movieYear" id="myear" ng-model="movieYear"  required ng-pattern="/^[0-9]{4}$/">
             <span ng-show="infos.movieYear.$invalid && infos.movieYear.$dirty">
                 Year is not valid.
             </span>
-        </p>
-        <p>
-            <label>Director</label>
-            <input type="text" name="movieDirector" ng-model="movieDirector" required>
+        </div>
+        <div class="form-group">
+            <label for="mdirector">Director</label>
+            <input class="form-control" type="text" id="mdirector" name="movieDirector" ng-model="movieDirector" required>
             <span ng-show="infos.movieDirector.$invalid && infos.movieDirector.$dirty">
                 Director can't be empty.
             </span>
-        </p>
-        <p>
-            <label>Description</label>
-            <input type="text" name="movieDescription" ng-model="movieDescription" required>
+        </div>
+        <div class="form-group">
+            <label for="mdescription">Description</label>
+            <input class="form-control" type="text" id="mdescription" name="movieDescription" ng-model="movieDescription" required>
             <span ng-show="infos.movieDescription.$invalid && infos.movieDescription.$dirty">
                 Description can't be empty.
             </span>
-        </p>
+        </div>
 
-        <p>
-            <button ng-click="addMovie()" ng-disabled="infos.$invalid">Add Movie</button>
-        </p>
+        <div class="form-group">
+            <button class="btn btn-primary" ng-click="addMovie()" ng-disabled="infos.$invalid">Add Movie</button>
+        </div>
     </form>
-    
-    <a href="#/">Home</a>
-
 </div>

@@ -1,0 +1,23 @@
+<form name="loginForm" ng-controller="UserController">
+    
+    <h1>Logging In</h1>
+    <p>{{message}}</p>
+    <div>
+        <label>E-mail</label>
+        <input name="email" type="email" ng-model="email" required>
+        <span ng-show="loginForm.email.$invalid && loginForm.email.$dirty">
+            E-mail can't be empty!
+        </span>
+        <br><br>
+        <label>Password</label>
+        <input name="password" type="password" ng-model="password" required>
+        <span ng-show="loginForm.password.$invalid && loginForm.password.$dirty">
+            Password can't be empty!
+        </span>
+    </div>
+    <br>
+
+    <button class="btn btn-default" type="submit" ng-click="logIn()" ng-disabled="loginForm.$invalid">Log In</button>
+    <br><br>
+    <a href='#/register'>Register</a>
+</form>

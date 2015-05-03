@@ -5,13 +5,13 @@
             <th style="border-top: none">Title</th>
             <th style="border-top: none">Director</th>
             <th style="border-top: none">Year</th>
-            <th style="border-top: none"></th>
+            <th ng-if="userLoggedIn()" style="border-top: none"></th>
         </tr>
         <tr ng-repeat="movie in movies">
             <td><a ng-href="#/movies/{{movie.$id}}">{{movie.name}}</a></td>
             <td>{{movie.director}}</td>
             <td>{{movie.year}}</td>
-            <td>
+            <td ng-if="userLoggedIn()">
                 <a class="btn btn-primary" href="#/movies/{{movie.$id}}/edit">Edit</a>
                 <a class="btn btn-danger" href="#/movies/" ng-click="removeMovie(movie)">Delete</a>
             </td>

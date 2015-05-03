@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="bootstrap-3.3.2-dist/css/bootstrap.min.css">
         <title>Movie Library</title>
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     </head>
     <body ng-app="MovieApp">
 
@@ -25,7 +26,9 @@
                     </ul>               
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><button type="button" class="btn btn-default navbar-btn">Log Out</button></li>
+                        <li><button type="button" class="btn btn-default navbar-btn" ng-click="logOut()" ng-if="userLoggedIn()">Log Out</button></li>
+                        <li><a href="#/login" ng-if="!userLoggedIn()">Log In</a></li>
+                        <li><a href="#/register" ng-if="!userLoggedIn()">Register</a></li>
                     </ul>
 
                 </div><!-- /.navbar-collapse -->
@@ -49,10 +52,12 @@
         <script src="app/app.js"></script>
         <script src="app/services/firebase_service.js"></script>
         <script src="app/services/omdb_service.js"></script>
+        <script src="app/services/auth_service.js"></script>
         <script src="app/controllers/movie_list_controller.js"></script>
         <script src="app/controllers/new_movie_controller.js"></script>
         <script src="app/controllers/view_movie_controller.js"></script>
         <script src="app/controllers/edit_movie_controller.js"></script>
         <script src="app/controllers/search_movie_controller.js"></script>
+        <script src="app/controllers/user_controller.js"></script>
     </body>
 </html>

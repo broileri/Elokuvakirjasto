@@ -5,7 +5,7 @@ MovieApp.service('OMDbService', function ($http) {
         }
         var req = {
             method: 'GET',
-            url: 'http://www.omdbapi.com/?s=' +name+ '&y=' + year
+            url: 'https://www.omdbapi.com/?s=' +name+ '&y=' + year
         };
         
         return $http(req);
